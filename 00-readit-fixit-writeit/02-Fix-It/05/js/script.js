@@ -18,17 +18,17 @@ const shows = [
 
 const wrapWithTag = (content, tagname) => `<${tagname}>${content}</${tagname}>`;
 
-const writeTitle = title => {
+const writeTitle = (title) => {
   const newTitle = uCFirst(title);
   document.write(wrapWithTag(newTitle, `li`));
 };
 
-const uCFirst = sentence => {
-  const words = sentence.split(``);
-  words = words.map(word => word.charAt(0).toUpperCase() + word.slice());
-  return words.join();
+const uCFirst = (sentence) => {
+  let words = sentence.split(` `);
+  words = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+  return words.join(` `);
 };
 
 document.write(`<ol>`);
-shows.forEach(show => writeTitle(show));
+shows.forEach((show) => writeTitle(show));
 document.write(`</ol>`);
