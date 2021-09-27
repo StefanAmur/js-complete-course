@@ -1,4 +1,4 @@
-const actors = [
+const winners = [
   {
     actor: 'Forest Whitaker',
     film: 'The Last King of Scotland',
@@ -50,3 +50,16 @@ const actors = [
     age: 41,
   },
 ];
+
+const wrapWithTag = (content, tagname) => `<${tagname}>${content}</${tagname}>`;
+
+const createList = (winners) => {
+  return `<ul>${winners
+    .sort((first, second) => {
+      return second.age - first.age;
+    })
+    .map((winner) => wrapWithTag(winner.actor, `li`))
+    .join(``)}</ul>`;
+};
+
+document.write(createList(winners));
