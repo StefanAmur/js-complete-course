@@ -62,4 +62,11 @@ const createList = (winners) => {
     .join(``)}</ul>`;
 };
 
+const addAges = (winners) => {
+  let sum = 0;
+  winners.forEach((winner) => {});
+};
+
 document.write(createList(winners));
+
+console.log('Combined age:', winners.reduce);
