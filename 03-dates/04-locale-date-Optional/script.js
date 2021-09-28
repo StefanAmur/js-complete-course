@@ -9,10 +9,19 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
+(function () {
+  let date = new Date();
 
-    // to change the content of a tag: document.getElementById("element-id").innerHTML = "new-value"
+  let options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+  };
 
-    // your code here
-
+  document.getElementById('target').addEventListener('click', function () {
+    this.innerHTML = date.toLocaleDateString('en-GB', options);
+  });
 })();
