@@ -14,29 +14,23 @@
 
   var performOperation = function (operation) {
     // perform the operation
+    let a = +document.getElementById('op-one').value;
+    let b = +document.getElementById('op-two').value;
     switch (operation) {
       case 'addition':
-        let a = +document.getElementById('op-one').value;
-        let b = +document.getElementById('op-two').value;
         console.log(a + b);
         break;
 
       case 'substraction':
-        let c = +document.getElementById('op-one').value;
-        let d = +document.getElementById('op-two').value;
-        console.log(c - d);
+        console.log(a - b);
         break;
 
       case 'multiplication':
-        let e = +document.getElementById('op-one').value;
-        let f = +document.getElementById('op-two').value;
-        console.log(e * f);
+        console.log(a * b);
         break;
 
       case 'division':
-        let g = +document.getElementById('op-one').value;
-        let h = +document.getElementById('op-two').value;
-        console.log(g / h);
+        console.log(a / b);
         break;
     }
   };
