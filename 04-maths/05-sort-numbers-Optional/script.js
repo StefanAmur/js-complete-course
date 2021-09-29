@@ -9,14 +9,23 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
+(function () {
+  document.getElementById('run').addEventListener('click', function () {
+    // take the values that are already in the input field and store them in a new variable (it outputs a string)
+    let inputNumbers = document.getElementById('numbers');
+    console.log(inputNumbers.value);
 
-    // to get the value of an input: document.getElementById("element-id").value
+    // create an array of numbers from that string
+    let numbersArray = inputNumbers.value.split(',');
+    console.log(numbersArray);
 
-    document.getElementById("run").addEventListener("click", function() {
-
-        // your code here
-
+    // sort the resulting array (ascending)
+    let sortedArray = numbersArray.sort(function (a, b) {
+      return a - b;
     });
+    console.log(sortedArray);
 
+    // display the sorted array in the input field
+    document.getElementById('numbers').setAttribute('value', sortedArray);
+  });
 })();

@@ -9,21 +9,22 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
-
-    var fruits = [
-        "pomme",
-        "poire",
-        "fraise",
-        "tomate",
-        "orange",
-        "mandarine",
-        "durian",
-        "pêche",
-        "raisin",
-        "cerise",
-    ];
-
-    // your code here
-
+(function () {
+  var fruits = [
+    'pomme',
+    'poire',
+    'fraise',
+    'tomate',
+    'orange',
+    'mandarine',
+    'durian',
+    'pêche',
+    'raisin',
+    'cerise',
+  ];
+  document.getElementById('run').addEventListener('click', function () {
+    fruits.splice(0, 1, 'banana');
+    fruits.splice(9, 1, 'kiwi');
+    console.log(fruits);
+  });
 })();
