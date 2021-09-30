@@ -9,8 +9,20 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
+(function () {
+  // get the link and store it in a variable
+  const image = document.getElementById('source').getAttribute('data-image');
 
-    // your code here
+  // create img element
+  const imageElement = document.createElement('img');
 
+  // set src attribute of img
+  imageElement.setAttribute('src', image);
+
+  // append img element to figure element
+  const parentElement = document.getElementById('target');
+  parentElement.appendChild(imageElement);
+
+  // remove old span element
+  document.getElementById('source').remove();
 })();

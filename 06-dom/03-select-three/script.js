@@ -9,8 +9,11 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
-
-    // your code here
-
+(function () {
+  // get the html collection
+  let list = document.getElementsByClassName('target');
+  // go over the items and change innerText of each item
+  for (let item of list) {
+    item.innerText = 'Owned';
+  }
 })();

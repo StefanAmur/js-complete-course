@@ -9,8 +9,25 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
+(function () {
+    // take original img and store it
+    const oldImage = document
+        .querySelector('section.material figure img')
+        .getAttribute('src');
 
-    // your code here
+    // take new img from data-hover and store it
+    const newImage = document
+        .querySelector('section.material figure img')
+        .getAttribute('data-hover');
 
+    // change to new img when mouse is hovering
+    let img = document.querySelector('section.material figure img');
+    img.addEventListener('mouseover', function () {
+        img.setAttribute('src', newImage);
+    });
+
+    // change to old image when mouse is not hovering
+    img.addEventListener('mouseout', function () {
+        img.setAttribute('src', oldImage);
+    });
 })();

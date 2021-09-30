@@ -9,8 +9,23 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
+(function () {
+    //get the element to which we will append the rows
+    let target = document.getElementById('target');
 
-    // your code here
+    // create the table element
+    let table = document.createElement('table');
 
+    // create the rows and append them to the table
+    for (let i = 0; i < 10; i++) {
+        const row = document.createElement('TR');
+        const data = document.createElement('TD');
+        row.appendChild(data);
+        data.innerText = "I'm a row!"
+
+        table.appendChild(row);
+    }
+
+    // append the entire table to the target
+    target.appendChild(table);
 })();
