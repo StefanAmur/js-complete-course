@@ -10,5 +10,47 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+
+    // work in progress
+
+    document.getElementById('run').addEventListener('click', function () {
+        let heroName = document.getElementById('hero-name').value;
+
+        let alterEgo = document.getElementById('hero-alter-ego').value;
+
+        let powers = document.getElementById('hero-powers').value;
+        if (heroName.length != 0 && alterEgo.length != 0 && powers.length != 0) {
+
+            let newHero = {
+                name: heroName,
+                alterEgo: alterEgo,
+                abilities: powers.split(', ')
+            }
+
+            // hmmm, WiP, Y U NO WORKING??
+
+            fetch('../../_shared/api.json', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    newHero
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
+            console.log(newHero);
+        } else {
+            alert('please fill in all the required fields');
+            console.log('not good');
+        }
+    })
 })();
