@@ -9,8 +9,11 @@
 // NOTE: don't focus on the existing code structure for now.
 // You will have time to focus on it later.
 
-(function() {
+(function () {
 
-    // your code here
+    document.getElementById('slider').addEventListener('input', function () {
+        let number = parseInt(document.getElementById('slider').value);
+        document.getElementById('target').innerText = (`0${number}`);
+    })
 
 })();

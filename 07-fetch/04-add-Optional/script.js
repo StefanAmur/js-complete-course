@@ -19,6 +19,7 @@
         let alterEgo = document.getElementById('hero-alter-ego').value;
 
         let powers = document.getElementById('hero-powers').value;
+
         if (heroName.length != 0 && alterEgo.length != 0 && powers.length != 0) {
 
             let newHero = {
@@ -32,7 +33,6 @@
             fetch('../../_shared/api.json', {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -47,7 +47,6 @@
                     console.log(error)
                 })
 
-            console.log(newHero);
         } else {
             alert('please fill in all the required fields');
             console.log('not good');
