@@ -18,5 +18,16 @@
         city: "Liège",
         status: "married",
     };
-    // your code here
+    document.getElementById('run').addEventListener('click', function () {
+        // get the keys of person (will output an array)
+        let keys = Object.keys(person);
+        // display the result as a table
+        // this could be turned into plain text with console.log(`The list of keys of person is ${keys}`)
+        console.table(keys);
+
+        // get the values of person (will also output an array)
+        let values = Object.values(person);
+        // display the result as a table
+        console.table(values);
+    })
 })();

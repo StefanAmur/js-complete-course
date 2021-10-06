@@ -10,46 +10,38 @@
 // You will have time to focus on it later.
 
 (() => {
-
-    // work in progress
-
     document.getElementById('run').addEventListener('click', function () {
-        let heroName = document.getElementById('hero-name').value;
+        // store the api url
+        const api_url = '../../_shared/api.json';
 
-        let alterEgo = document.getElementById('hero-alter-ego').value;
+        // get the data from the api and store it
+        async function getData() {
+            const response = await fetch(api_url);
+            const data = await response.json();
 
-        let powers = document.getElementById('hero-powers').value;
+            // get the user inputed values and store them
+            let heroName = document.getElementById('hero-name').value;
+            let alterEgo = document.getElementById('hero-alter-ego').value;
+            let powers = document.getElementById('hero-powers').value;
 
-        if (heroName.length != 0 && alterEgo.length != 0 && powers.length != 0) {
+            // check if all inputs have been filled in and if so, create a new hero object
+            if (heroName.length != 0 && alterEgo.length != 0 && powers.length != 0) {
+                let newHero = {
+                    id: data.heroes.length + 1,
+                    name: heroName,
+                    alterEgo: alterEgo,
+                    abilities: powers.split(', ')
+                }
 
-            let newHero = {
-                name: heroName,
-                alterEgo: alterEgo,
-                abilities: powers.split(', ')
+                // update the original hero list
+                data.heroes.push(newHero);
+
+                // display in console the updated hero list
+                console.log(data.heroes);
+            } else {
+                alert('please fill in all the required fields');
             }
-
-            // hmmm, WiP, Y U NO WORKING??
-
-            fetch('../../_shared/api.json', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    newHero
-                })
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-
-        } else {
-            alert('please fill in all the required fields');
-            console.log('not good');
         }
-    })
+        getData();
+    });
 })();

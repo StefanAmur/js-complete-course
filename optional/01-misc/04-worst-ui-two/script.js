@@ -10,34 +10,70 @@
 // You will have time to focus on it later.
 
 (function () {
-
+    // assign all buttons and target element to individual variables
     let partOne = document.getElementById('part-one');
-
     let partTwo = document.getElementById('part-two');
-
     let partThree = document.getElementById('part-three');
-
     let partFour = document.getElementById('part-four');
+    let target = document.getElementById('target');
 
-    const parts = [partOne, partTwo, partThree, partFour];
-    console.log(parts);
+    // set the correct phone number format on page load
+    target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
 
-    parts.forEach(button => {
-        let result = 0;
-        button.addEventListener('click', function () {
-            result = button.innerText;
-            console.log(button.innerText);
-            if (result > button.dataset.max) {
-                result = button.dataset.min
-            } else if (result <= 9) {
-                button.innerText = `0${result}`
-            } else {
-                button.innerText = `${result}`
-            }
+    let a = parseInt(partOne.textContent);
+    partOne.addEventListener('click', () => {
+        if (a < partOne.dataset.max) {
+            a++;
+            partOne.innerText = a;
+            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+        } else {
+            a = partOne.dataset.min;
+        }
+    });
 
-            document.getElementById('target').innerText = `${partOne.innerText}${partTwo.innerText}${partThree.innerText}${partFour.innerText}`;
-        })
-    })
+    let b = parseInt(partTwo.dataset.min);
+    partTwo.addEventListener('click', () => {
+        if (b < partTwo.dataset.max && b < 9) {
+            b++;
+            partTwo.textContent = `0${b}`;
+            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+        } else if (b < partTwo.dataset.max && b >= 9) {
+            b++;
+            partTwo.textContent = b;
+            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+        } else {
+            b = partTwo.dataset.min;
+        }
+    });
 
+    let c = parseInt(partThree.dataset.min);
+    partThree.addEventListener('click', () => {
+        if (c < partThree.dataset.max && c < 9) {
+            c++;
+            partThree.textContent = `0${c}`;
+            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+        } else if (c < partThree.dataset.max && c >= 9) {
+            c++;
+            partThree.textContent = c;
+            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+        } else {
+            c = partThree.dataset.min;
+        }
+    });
 
+    let d = parseInt(partFour.dataset.min);
+    partFour.addEventListener('click', () => {
+        if (d < partFour.dataset.max && d < 9) {
+            d++;
+            partFour.textContent = `0${d}`;
+            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+        } else if (d < partFour.dataset.max && d >= 9) {
+            d++;
+            partFour.textContent = d;
+            console.log(d);
+            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+        } else {
+            d = partFour.dataset.min;
+        }
+    });
 })();
