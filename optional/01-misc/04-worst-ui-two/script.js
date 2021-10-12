@@ -17,63 +17,93 @@
     let partFour = document.getElementById('part-four');
     let target = document.getElementById('target');
 
+    const parts = [partOne, partTwo, partThree, partFour];
+
     // set the correct phone number format on page load
     target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
 
-    let a = parseInt(partOne.textContent);
-    partOne.addEventListener('click', () => {
-        if (a < partOne.dataset.max) {
-            a++;
-            partOne.innerText = a;
+    parts.forEach(part => {
+        let min = parseInt(part.dataset.min);
+        let max = parseInt(part.dataset.max);
+        let nr = parseInt(part.dataset.min);
+        part.addEventListener('click', () => {
+            //nr = getNumber(nr, min, max);
+            nr = nr < max ? ++nr : min;
+            //part.textContent = addPadding(nr);
+            //part.textContent = nr <= 9 ? `0${nr}` : `${nr}`;
+            part.textContent = nr.toString().padStart(2, '0');
             target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
-        } else {
-            a = partOne.dataset.min;
-        }
+        });
     });
 
-    let b = parseInt(partTwo.dataset.min);
-    partTwo.addEventListener('click', () => {
-        if (b < partTwo.dataset.max && b < 9) {
-            b++;
-            partTwo.textContent = `0${b}`;
-            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
-        } else if (b < partTwo.dataset.max && b >= 9) {
-            b++;
-            partTwo.textContent = b;
-            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
-        } else {
-            b = partTwo.dataset.min;
-        }
-    });
+    function getNumber(nr, min, max) {
+        return nr < max ? ++nr : min;
+    }
 
-    let c = parseInt(partThree.dataset.min);
-    partThree.addEventListener('click', () => {
-        if (c < partThree.dataset.max && c < 9) {
-            c++;
-            partThree.textContent = `0${c}`;
-            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
-        } else if (c < partThree.dataset.max && c >= 9) {
-            c++;
-            partThree.textContent = c;
-            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
-        } else {
-            c = partThree.dataset.min;
+    function addPadding(nr) {
+        if (nr <= 9) {
+            return `0${nr}`;
         }
-    });
+        else {
+            return `${nr}`;
+        }
+    }
 
-    let d = parseInt(partFour.dataset.min);
-    partFour.addEventListener('click', () => {
-        if (d < partFour.dataset.max && d < 9) {
-            d++;
-            partFour.textContent = `0${d}`;
-            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
-        } else if (d < partFour.dataset.max && d >= 9) {
-            d++;
-            partFour.textContent = d;
-            console.log(d);
-            target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
-        } else {
-            d = partFour.dataset.min;
-        }
-    });
+
+    // let a = parseInt(partOne.textContent);
+    // partOne.addEventListener('click', () => {
+    //     if (a < partOne.dataset.max) {
+    //         a++;
+    //         partOne.innerText = a;
+    //         target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+    //     } else {
+    //         a = partOne.dataset.min;
+    //     }
+    // });
+
+    // let b = parseInt(partTwo.dataset.min);
+    // partTwo.addEventListener('click', () => {
+    //     if (b < partTwo.dataset.max && b < 9) {
+    //         b++;
+    //         partTwo.textContent = `0${b}`;
+    //         target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+    //     } else if (b < partTwo.dataset.max && b >= 9) {
+    //         b++;
+    //         partTwo.textContent = b;
+    //         target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+    //     } else {
+    //         b = partTwo.dataset.min;
+    //     }
+    // });
+
+    // let c = parseInt(partThree.dataset.min);
+    // partThree.addEventListener('click', () => {
+    //     if (c < partThree.dataset.max && c < 9) {
+    //         c++;
+    //         partThree.textContent = `0${c}`;
+    //         target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+    //     } else if (c < partThree.dataset.max && c >= 9) {
+    //         c++;
+    //         partThree.textContent = c;
+    //         target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+    //     } else {
+    //         c = partThree.dataset.min;
+    //     }
+    // });
+
+    // let d = parseInt(partFour.dataset.min);
+    // partFour.addEventListener('click', () => {
+    //     if (d < partFour.dataset.max && d < 9) {
+    //         d++;
+    //         partFour.textContent = `0${d}`;
+    //         target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+    //     } else if (d < partFour.dataset.max && d >= 9) {
+    //         d++;
+    //         partFour.textContent = d;
+    //         console.log(d);
+    //         target.textContent = (`0${partOne.textContent}${partTwo.textContent}${partThree.textContent}${partFour.textContent}`);
+    //     } else {
+    //         d = partFour.dataset.min;
+    //     }
+    // });
 })();

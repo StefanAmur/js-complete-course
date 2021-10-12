@@ -10,5 +10,9 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    document.getElementById('run').addEventListener('click', () => {
+        window.lib.getPosts((error, posts) => {
+            (error) ? console.log(error) : console.log(posts);
+        })
+    })
 })();
